@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Documents</title>
+  <link rel="stylesheet" href="/static/css/sign.css" />
+  <link rel="stylesheet" href="/static/css/login.css" />
+  <link rel="stylesheet" href="/static/css/main.css" />
+  <link rel="stylesheet" href="/static/css/menu.css" />
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+  <style>
+    @font-face {
+      font-family: 'NanumBaReunHiPi';
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+      src: url('https://cdn.jsdelivr.net/gh/fonts-archive/NanumBaReunHiPi/NanumBaReunHiPi.woff2') format('woff2'),
+           url('https://cdn.jsdelivr.net/gh/fonts-archive/NanumBaReunHiPi/NanumBaReunHiPi.woff') format('woff'),
+           url('https://cdn.jsdelivr.net/gh/fonts-archive/NanumBaReunHiPi/NanumBaReunHiPi.ttf') format('truetype');
+    }
+
+    body, html, * {
+      font-family: 'NanumBaReunHiPi', sans-serif;
+    }
+
+    .background-wrapper {
+      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 1;
+    }
+
+    .background-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1;
+    }
+
+    .top_bar {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+    }
+
+    .top_bar a {
+      color: #5D1900;
+      text-decoration: none;
+      margin-left: 10px;
+      font-size: 25px;
+      text-shadow: 2px 2px 4px white;
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(8px);
+      padding: 30px;
+      border-radius: 10px;
+	  
+	  }
+
+	.nav_bar {
+	    position: fixed;
+	    top: 60px;
+	    bottom: 0;
+	    width: 180px;
+	    z-index: 500;
+	    font-weight: bold;
+	    font-family: 'NanumBaReunHiPi', sans-serif;
+	   	background-color: rgba(255, 240, 220, 0.5); 
+	    backdrop-filter: blur(8px); /* 흐림 효과는 한 번만 */
+	    color: #FFBB00;
+	    padding: 30px 15px;
+	    border-top-right-radius: 20px;
+	    border-bottom-right-radius: 20px;
+	    display: flex;
+	    flex-direction: column;
+	    align-items: flex-start;
+	    overflow-y: auto;
+	    box-sizing: border-box;
+	}
+
+	.nav_bar a {
+	    display: inline-block;
+	    white-space: nowrap;
+	    font-size: 40px;
+	    margin-bottom: 10px;
+	    text-align: left;
+	    color: #5D1900;
+	    text-decoration: none;
+	    opacity: 1;
+	    text-shadow: 10px 2px 5px white;
+	    position: relative;
+	    line-height: 1.4;
+	    padding: 10px 5px;
+	    background-color: transparent; /* 배경 제거 */
+	    backdrop-filter: none; /* 흐림 제거 */
+		border-bottom-right-radius: 0;
+		height: calc(100vh - 60px - 80px);
+
+	}
+
+		
+	}
+
+	.modal {
+	  display: none;
+	  position: fixed;
+	  z-index: 1000;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  background-color: rgba(255, 255, 255, 0.5);
+	}
+
+	.modal-content {
+	  background-color: rgba(255, 255, 255, 0.5);
+	  margin: 10% auto;
+	  padding: 20px;
+	  width: 400px;
+	  border-radius: 10px;
+	  position: relative;
+	  font-family: 'NanumBaReunHiPi', sans-serif;
+	  line-height: 1.5;
+	  color: #813D00;
+	}
+
+
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+	.menu_popup {
+		position: fixed;
+		top: 20%;
+		left: 30%;
+		transform: translate(calc(-40% - 30px), -20%);
+		background-color: rgba(255, 255, 255, 0.5);
+	    border: 1px solid #ccc;
+	    padding: 20px;
+	    z-index: 1000;
+	    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+	    border-radius: 10px;
+	    width: auto;
+	    text-align: center;
+	    font-size: 20px;
+		font-family: 'NanumBaReunHiPi', sans-serif;
+		right: bold;	    
+	    line-height: 1.5;
+		color: #813D00;
+	}
+
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background-wrapper">
+    <img src="./images/coffee.jpg" alt="">
+   	 </div>
+
+  <header>
+    <nav class="top_bar">
+      <a href="#" onclick="document.getElementById('signModal').style.display='block'">회원가입</a>
+      <a href="#" onclick="document.getElementById('loginModal').style.display='block'">로그인</a>
+    </nav>
+  </header>
+
+  <aside>
+    <div class="nav_bar">
+      <a href="#" onclick="document.getElementById('menuModal').style.display='block'">메뉴</a>
+      <a href="./ordernow">주문현황</a>
+      <a href="./cafeplace">카페위치</a>
+      <a href="./cafereview">카페후기</a>
+      <a href="./drivingthrow">드라이빙스루</a>
+    </div>
+  </aside>
+  
+  <!-- 회원가입 모달 -->
+  <div id="signModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('signModal')">&times;</span>
+      <h2>회원가입하기</h2>
+      <form action="${pageContext.request.contextPath}/cafe/signmodal.html" method="post">
+        <input type="text" name="id" placeholder="아이디" required><br>
+        <input type="text" name="pwd" placeholder="비밀번호" required><br>
+        <input type="text" name="name" placeholder="이름" required><br>
+        <input type="text" name="phone" placeholder="전화번호" required><br>
+        <input type="text" name="address" placeholder="주소" required><br>
+        <button type="submit">가입하기</button>
+		</form>
+	  
+    </div>
+  </div>
+  <!-- 로그인 모달 -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('loginModal')">&times;</span>
+      <h2>로그인하기</h2>
+      <form action="${pageContext.request.contextPath}/cafe/loginmodal.html" method="post">
+        <input type="text" name="id" placeholder="아이디" required><br>
+        <input type="text" name="pwd" placeholder="비밀번호" required><br>
+        <button type="submit">로그인하기</button>
+        <button type="button">비밀번호찾기</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 메뉴 모달 -->
+  <div id="menuModal" class="hidden menu_popup">
+    <div class="modal_content" style="display: flex; text-align: center">
+      <span class="close" onclick="closeModal('menuModal')">&times;</span>
+      <h2>커피</h2>    
+    </div>
+    <!-- 커피 메뉴 -->
+    <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>에스프레소</a>
+    <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>블렌디드</a>
+    <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>카페라테</a>
+    <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>아메리카노</a>
+    <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>카푸치노</a>
+    <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>프라푸치노</a>
+
+    <!-- 디저트 메뉴 -->
+    <div id="menuModalDessert">
+      <div class="modal_header" style="display: flex; text-align: center">
+        <h3>디저트</h3>
+      </div>
+      <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>샌드위치</a>
+      <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>케이크</a>
+      <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>브레드</a>
+      <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>아이스크림</a>
+    </div>
+  </div>
+
+  <!-- 공통 closeModal 함수 정의는 여기에만 -->
+  <script>
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = 'none';
+        modal.classList.add('hidden');
+      }
+    }
+	function openModal(modalId) {
+	  const modal = document.getElementById(modalId);
+	  if (modal) {
+	    modal.style.display = 'block';
+		modal.classList.remove('hidden'); // 이 줄 추가
+		}
+		}
+  </script>
+  </body>
+  </html>

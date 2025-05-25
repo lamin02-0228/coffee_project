@@ -1,0 +1,62 @@
+
+body, html, * {
+  font-family: 'NanumBaReunHiPi', sans-serif !important;
+  color: #877800;          /* 글꼴 색상 */
+  text-decoration: none;   /* 밑줄 제거 */
+  }
+  
+  .hidden {
+      display: none;
+    }
+
+    /* 메뉴 트리거 스타일 (선택 사항) */
+    #menu_trigger {
+      cursor: pointer;
+      padding: 10px 20px;
+      background-color: #444;
+      color: white;
+      display: inline-block;
+      margin: 20px;
+      border-radius: 5px;
+	  font-size:40px;
+	  vertical-align: middle;
+	  margin-right: 10px;
+	 }
+	  
+	  .menu-link i {
+	   vertical-align: middle;
+	   margin-right: 10px;
+	  }
+
+
+    /* 중앙에 위치할 팝업 */
+	#menu_popup {
+	    position: fixed;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+	    background-color: white;
+	    border: 1px solid #ccc;
+	    padding: 20px;
+	    z-index: 1000;
+	    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+	    border-radius: 10px;
+	    width: 200px;
+	    text-align: center;
+	    font-size: 24px;
+	    line-height: 1.8; /* 문장 간 간격 */
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+   
+   #menu_popup a {
+     font-size: 50px;
+	 color: white;       
+         
+   }
+
+    
+ 

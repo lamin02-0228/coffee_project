@@ -1,0 +1,99 @@
+
+body, html, * {
+  font-family: 'NanumBaReunHiPi', sans-serif !important;
+  color: #877800;          /* 글꼴 색상 */
+  text-decoration: none;   /* 밑줄 제거 */
+  font-size:20px;
+}
+
+
+@font-face {
+  font-family: 'NanumBaReunHiPi';
+  src: url('/fonts/NanumBaReunHiPi.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  
+  }
+
+  
+.background-wrapper {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+ 
+}
+
+.background-wrapper image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  
+}
+   
+.top_bar {
+  font-family: 'NanumBaReunHiPi', woff;
+  position: fixed;
+  top: 0;  
+  z-index: 400;
+  padding: 10px;
+  size:80;
+  color: #FFBB00;
+}
+
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  color: #FFBB00;
+  
+}
+
+
+.nav_bar {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    width: 180px;
+    z-index: 500;
+    font-weight: bold;
+    font-family: 'NanumBaReunHiPi', sans-serif;
+    background-color: transparent;
+    color: #FFBB00;
+    padding: 30px 15px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.nav_bar a {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+    color: #FFBB00;
+    text-decoration: none;
+}
+
+	
+.menu_popup {
+	font-size: 20px;
+	
+}
