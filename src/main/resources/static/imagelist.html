@@ -184,21 +184,26 @@
    }
 
 .icecream-sub {
-     z-index: 1000;
-  position: relative;
-    }
-.icecream-sub button {
-  display: flex;
-  background-color: #E4F7BA;
-  color: #425518;
-  padding: 8px 20px;
-  justify-content: flex-start;
-  border-radius: 8px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100px;
+ display: flex;           /* 버튼들을 가로로 정렬 */
+  gap: 10px;               /* 버튼 사이 간격 */
+  position: fixed;
+  z-index: 1100;
+  left: 50%; 
+  position: relative;               /* 가로 중앙 */
+  bottom: 20px;            /* 화면 아래에서 20px 위 */
+  transform: translateX(-50%); /* 정확히 가운데 정렬 */
 }
+  
+.icecream-sub button {
+  display: flex;           /* 버튼 가로 정렬 */
+  gap: 20px;               /* 버튼 사이 간격 */
+  position: fixed;         /* 화면에 고정 (모달 밖에 띄우려면 fixed) */
+  z-index: 2000;           /* 모달 위 */
+  left: 50%;               /* 가로 중앙 */
+  bottom: 20px;            /* 화면 아래에서 20px 위 */
+  transform: translateX(-50%); /* 정확히 가운데 정렬 */
+}
+ 
 
 .icecream-sub button:hover {
   background-color: #E4F7BA;
@@ -326,7 +331,7 @@
 
  <img id="icecreamDisplay" src="/images/appleice.JPG"
      alt="애플민트 아이스크림"
-     style="display: none; top: 20px; right: 700px; width: 600px; z-index: 1; border-radius: 8px;">
+     style="display: none; top: 20px; right: 500px; width: 600px; z-index: 1; border-radius: 8px;">
 
 
 <script>
