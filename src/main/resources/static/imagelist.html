@@ -143,19 +143,6 @@
      line-height: 1.5;
      color: #813D00;
    }
-.icecream-image-box {
-   position: relative; /* 기준이 되는 컨테이너 */
-}
-    
-.icecream-image-box img {
-  position: absolute;
-  top: 100px; /* 위에서 얼마나 떨어질지 */
-  right: 100px; /* 오른쪽에서 50px 떨어진 위치에 */
-  width: 600px;
-  display: none;
-  z-index: 1000;
-  border-radius: 10px;
-}
 
 
     .close {
@@ -166,11 +153,12 @@
       font-weight: bold;
       cursor: pointer;
     }
- .icecreamDisplay {
+    #icecreamDisplay {
+      
       /* position: relative; */
       top: 20px;
-      right: 500px;
-      width: 500px;
+      right: 700px;
+      width: 600px;
       z-index: 1000;
       border-radius: 8px;
     }
@@ -204,7 +192,7 @@
   background-color: #E4F7BA;
   color: #425518;
   padding: 8px 20px;
-  justify-content: flex-end;
+  justify-content: flex-start;
   border-radius: 8px;
   font-size: 20px;
   cursor: pointer;
@@ -288,6 +276,7 @@
   
 }
   
+  
   <div id="menuModal" class="menu_popup">
    <span class="close" onclick="closeModal('menuModal')">&times;</span>
       <div id="menuModalCoffee">
@@ -324,7 +313,7 @@
       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>아이스크림</a>
  
 <a href="javascript:void(0);" class="menu-item" style="color: #813D00;" onclick="toggleIcecreamSub()"></a> 
-    <div class="icecream-sub"></div>
+    <div class="icecream-sub button"></div>
   <div><button onclick="showImageSection('appleice')">애플민트</button></div>
   <div><button onclick="showImageSection('blacksorbet')">블랙소르베</button></div>
   <div><button onclick="showImageSection('grapesherbet')">포도샤베트</button></div>
@@ -333,12 +322,12 @@
   <div><button onclick="showImageSection('greentea')">녹차</button></div>
   <div><button onclick="showImageSection('amond')">피스타치오아몬드</button></div>
 
-<div class="icecream-image-box">
-    <img id="icecreamDisplay" src="/images/appleice.JPG" alt="애플민트 이미지" style="display: none;" />
-  </div>
-  <img id="icecreamDisplay" src="/images/blackice.JPG" alt="블랙소르베 이미지" style="display: none;
-  style="display: none; width: 500px; position: absolute; top: 100px; right: 100%; transform: translateX(-50%); border-radius: 8px;" />
-</div>
+
+
+ <img id="icecreamDisplay" src="/images/appleice.JPG"
+     alt="애플민트 아이스크림"
+     style="display: none; top: 20px; right: 700px; width: 600px; z-index: 1; border-radius: 8px;">
+
 
 <script>
 const imageMap = {
