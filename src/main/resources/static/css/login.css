@@ -2,14 +2,16 @@
 
 body, html, * {
   font-family: 'NanumBaReunHiPi', sans-serif !important;
+  color: #877800;          /* 글꼴 색상 */
+  text-decoration: none;   /* 밑줄 제거 */
+  font-size:20px;
 }
-
 
 @font-face {
   font-family: 'NanumBaReunHiPi';
   src: url('/fonts/NanumBaReunHiPi.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-  
+}
   
   

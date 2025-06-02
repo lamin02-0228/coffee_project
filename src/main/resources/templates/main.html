@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/static/css/login.css" />
   <link rel="stylesheet" href="/static/css/main.css" />
   <link rel="stylesheet" href="/static/css/menu.css" />
+  <link rel="stylesheet" href="/static/css/driving.css" />
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  
@@ -103,8 +104,6 @@
 		border-bottom-right-radius: 0;
 		height: calc(100vh - 60px - 80px);
 
-	}
-
 		
 	}
 
@@ -131,8 +130,6 @@
 	  color: #813D00;
 	}
 
-
-    }
 
     .close {
       position: absolute;
@@ -224,27 +221,39 @@
 
   <!-- 메뉴 모달 -->
   <div id="menuModal" class="hidden menu_popup">
-    <div class="modal_content" style="display: flex; text-align: center">
-      <span class="close" onclick="closeModal('menuModal')">&times;</span>
-      <h2>커피</h2>    
+    <span class="close" onclick="closeModal('menuModal')">&times;</span>
+  <div id="menuModalCoffee">
+    <div class="modal_header" style="display: flex; text-align: center">
+     <h2>커피</h2>    
     </div>
-    <!-- 커피 메뉴 -->
-    <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>에스프레소</a>
-    <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>블렌디드</a>
-    <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>카페라테</a>
-    <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>아메리카노</a>
-    <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>카푸치노</a>
-    <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>프라푸치노</a>
-
-    <!-- 디저트 메뉴 -->
+    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>에스프레소</a>
+    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>블렌디드</a>
+    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>카페라테</a>
+    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>아메리카노</a>
+    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>카푸치노</a>
+    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>프라푸치노</a>
+    </div>
     <div id="menuModalDessert">
+        <div class="smoothy-categories">
+        <div class="modal_header" style="display: flex; text-align: center">
+        <h3>스무디</h3>
+        </div>
+     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>허니자몽</a>
+     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>허니레몬</a>
+     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>아보카도바나나</a>
+    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>논산딸기</a>
+    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>블루베리</a>
+    </div>
+        <!-- 디저트 메뉴 -->
+    <div id="menuModalDessert">
+    <div class="Dessert-categories">
       <div class="modal_header" style="display: flex; text-align: center">
-        <h3>디저트</h3>
+        <h4>디저트</h4>
       </div>
-      <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>샌드위치</a>
-      <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>케이크</a>
-      <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>브레드</a>
-      <a href="/menu.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>아이스크림</a>
+      <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>샌드위치</a>
+      <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>케이크</a>
+      <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>브레드</a>
+      <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>아이스크림</a>
     </div>
   </div>
 

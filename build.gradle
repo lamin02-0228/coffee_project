@@ -6,6 +6,7 @@ plugins {
 
 group = 'com.stichteam'
 version = '3.5.0'
+sourceCompatibility = '21'
 
 java {
 	toolchain {
@@ -28,7 +29,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'jakarta.persistence:jakarta.persistence-api'
 	implementation 'org.hibernate.orm:hibernate-core'
-	// implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'

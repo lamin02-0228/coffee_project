@@ -1,6 +1,8 @@
 package com.stichteam.cafe.cafe.controller;
 
+import org.hibernate.service.Service;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,17 +32,42 @@ public class CafeController {
         return "menumodal";
 	}
 	
+    @GetMapping("/cafe/imagelist2.html")
+	public String imagelistPage() {
+		return "imagelist";
+	}
 	@GetMapping("/cafe/menu")
 	 public String menu() {
 		 return "menu";
 	}
+	@GetMapping("/drivingthrow")
+	public String somePage() {
+	    return "drivingthrow";
+	}
+  
+	@GetMapping("/cafeplace")
+	public String cafeplace() {
+		return "cafeplace";
+	}
 	
+	@RequestMapping("/cafereview")
+	public String cafeReview() {
+	     return "cafereview";
+	}
+
+
+
+	@GetMapping("/ordernow")
+	public String ordernow() {
+		return "ordernow";
+	}
     @GetMapping("/login")
     public String showloginmodal() {
   	return "login";
   }
-
-    @RequestMapping(value = {"/", "/main.do", "/login"}, method = RequestMethod.GET)
+  
+ 
+	@RequestMapping(value = {"/", "/main.do", "/login"}, method = RequestMethod.GET)
     public ModelAndView showMainAndLogin(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("main/main");
 
@@ -61,8 +88,5 @@ public class CafeController {
     }
    
     }	
-    
-    
-   
     
     
