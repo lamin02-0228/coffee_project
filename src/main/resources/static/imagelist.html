@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-     @font-face {
+      @font-face {
       font-family: 'NanumBaReunHiPi';
       font-weight: normal;
       font-style: normal;
@@ -26,9 +26,8 @@
     body, html, * {
       font-family: 'NanumBaReunHiPi', sans-serif;
     }
- 
+  
     .background-wrapper {
-      
       position: relative;
       top: 0; left: 0;
       width: 100%;
@@ -62,8 +61,8 @@
       backdrop-filter: blur(8px);
       padding: 30px;
       border-radius: 10px;
-     
-     }
+      
+      }
 
    .nav_bar {
        position: fixed;
@@ -101,8 +100,8 @@
        padding: 10px 5px;
        background-color: transparent; /* 배경 제거 */
        backdrop-filter: none; /* 흐림 제거 */
-      border-bottom-right-radius: 0;
-      height: calc(100vh - 60px - 80px);
+       border-bottom-right-radius: 0;
+       height: calc(100vh - 60px - 80px);
 
    
 }
@@ -117,6 +116,7 @@
      width: 100%;
      height: 100%;
      background-color: rgba(255, 255, 255, 0.5);
+     right:100px;
 
 
 }
@@ -142,6 +142,7 @@
      font-family: 'NanumBaReunHiPi', sans-serif;
      line-height: 1.5;
      color: #813D00;
+     right:200px;
    }
 
 
@@ -153,17 +154,8 @@
       font-weight: bold;
       cursor: pointer;
     }
-    #icecreamDisplay {
-      
-      /* position: relative; */
-      bottom: 80px;
-      right: 700px;
-      width: 400px;
-      z-index: 1000;
-      border-radius: 8px;
-    }
-
-   .menu_popup {
+   
+    .menu_popup {
       position: fixed;
       top: 20%;
       left: 30%;
@@ -177,32 +169,32 @@
        width: auto;
        text-align: center;
        font-size: 20px;
-      font-family: 'NanumBaReunHiPi', sans-serif;
-      right: bold;       
+       font-family: 'NanumBaReunHiPi', sans-serif;
+       right: bold;         
        line-height: 1.5;
-      color: #813D00;
-   }
-
-.icecream-sub {
- display: flex;           /* 버튼들을 가로로 정렬 */
-  gap: 10px;               /* 버튼 사이 간격 */
-  position: fixed;
-  z-index: 1100;
-  left: 50%; 
-  position: relative;               /* 가로 중앙 */
-  bottom: 20px;            /* 화면 아래에서 20px 위 */
-  transform: translateX(-50%); /* 정확히 가운데 정렬 */
-}
-  
+       color: #813D00;
+    }
+ .icecream-sub {
+  display: none; 
+  z-index: 1000;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display:flex;
+  }   
 .icecream-sub button {
-         /* 버튼 가로 정렬 */
-  gap: 20px;               /* 버튼 사이 간격 */        /* 화면에 고정 (모달 밖에 띄우려면 fixed) */
-  z-index: 2000;           /* 모달 위 */
-  left: 50%;               /* 가로 중앙 */
-  bottom: 20px;            /* 화면 아래에서 20px 위 */
-  transform: translateX(-50%); /* 정확히 가운데 정렬 */
+  background-color: #E0FF8B;
+  color: #425518;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100px;
+  gap: 10px;
+  flex-wrap: wrap;    
 }
- 
+
 .icecream-sub button:hover {
   background-color: #E4F7BA;
   color: #425518;
@@ -211,6 +203,16 @@
     .hidden {
       display: none;
     }
+    
+  .icecreamDisplay {
+      position: absolute; /* Changed to absolute to position relative to body/wrapper */
+      top: 20px; /* Adjust as needed */
+      right: 700px; /* Adjust as needed */
+      transform: translate(-50%, -50%); /* Center the image */
+      width: 600px;
+      z-index: 2000; /* Ensure it's below modals but above background */
+      border-radius: 8px;
+    }   
  </style>
 
 </head>
@@ -232,7 +234,6 @@
     </div>
   </aside>
   
-  <!-- 회원가입 모달 -->
   <div id="signModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('signModal')">&times;</span>
@@ -247,7 +248,6 @@
       </form>  
     </div>
   </div>
-  <!-- 로그인 모달 -->
   <div id="loginModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('loginModal')">&times;</span>
@@ -260,148 +260,153 @@
       </form>
     </div>
   </div>
- } 
   
-  <aside>
-    <div class="nav_bar">
-      <a href="#" onclick="document.getElementById('menuModal').style.display='block'">메뉴</a>
-      <a href="./ordernow">주문현황</a>
-      <a href="./cafeplace">카페위치</a>
-      <a href="./cafereview">카페후기</a>
-      <a href="./drivingthrow">드라이빙스루</a>
-    </div>
-  </aside>
- } 
   <div class="background-wrapper" style="position: relative; width: 100%; height: 100vh;">
-  <!-- 배경 이미지 -->
   <img src="./images/coffee.jpg" alt="배경 이미지" 
-       style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
   
-}
-  
-  
+    <img id="icecreamDisplay" src="/images/appleice.JPG"
+         alt="애플민트 아이스크림"
+         style="display: none;">
+
   <div id="menuModal" class="menu_popup">
    <span class="close" onclick="closeModal('menuModal')">&times;</span>
-      <div id="menuModalCoffee">
-    <div class="modal_header" style="display: flex; text-align: center">
-     <h2>커피</h2>    
-    </div>
-    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>에스프레소</a>
-    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>돌체라떼</a>
-    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>카페라테</a>
-    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>아메리카노</a>
-    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>카푸치노</a>
-    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>프라푸치노</a>
-    </div>
-    <div id="menuModalSmoothy">
-        <div class="smoothy-categories">
-        <div class="modal_header" style="display: flex; text-align: center">
-        <h3>스무디</h3>
-        </div>
-     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>허니자몽</a>
-     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>허니레몬</a>
-     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>아보카도바나나</a>
-    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>논산딸기</a>
-    <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>블루베리</a>
-    </div>
-        <!-- 디저트 메뉴 -->
-    <div id="menuModalDessert">
-    <div class="dessert-categories">
-      <div class="modal_header" style="display: flex; text-align: center">
-        <h4>디저트</h4>
-      </div>
-      <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>샌드위치</a>
-      <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>케이크</a>
-      <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>브레드</a>
-      <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>아이스크림</a>
- 
-<a href="javascript:void(0);" class="menu-item" style="color: #813D00;" onclick="toggleIcecreamSub()"></a> 
-    <div class="icecream-sub button"></div>
-  <div><button onclick="showImageSection('appleice')">애플민트</button></div>
-  <div><button onclick="showImageSection('blacksorbet')">블랙소르베</button></div>
-  <div><button onclick="showImageSection('grapesherbet')">포도샤베트</button></div>
-  <div><button onclick="showImageSection('milksalt')">우유소금</button></div>
-  <div><button onclick="showImageSection('honeycrunch')">허니크런치</button></div>
-  <div><button onclick="showImageSection('greentea')">녹차</button></div>
-  <div><button onclick="showImageSection('amond')">피스타치오아몬드</button></div>
+       <div id="menuModalCoffee">
+     <div class="modal_header" style="display: flex; text-align: center">
+       <h2>커피</h2>     
+     </div>
+     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>에스프레소</a>
+     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>돌체라떼</a>
+     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>카페라테</a>
+     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>아메리카노</a>
+     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>카푸치노</a>
+     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>프라푸치노</a>
+     </div>
+     <div id="menuModalSmoothy">
+         <div class="smoothy-categories">
+         <div class="modal_header" style="display: flex; text-align: center">
+         <h3>스무디</h3>
+         </div>
+       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>허니자몽</a>
+       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>허니레몬</a>
+       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>아보카도바나나</a>
+       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>논산딸기</a>
+       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>블루베리</a>
+     </div>
+       <div id="menuModalDessert">
+     <div class="dessert-categories">
+       <div class="modal_header" style="display: flex; text-align: center">
+         <h4>디저트</h4>
+       </div>
+       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>샌드위치</a>
+       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>케이크</a>
+       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>브레드</a>
+       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>아이스크림</a>
+   <a href="javascript:void(0);" class="menu-item" style="color: #813D00;" onclick="toggleIcecreamSub()"></a> 
+   <div class="icecream-sub" id="icecreamMenu">
+       <div><button onclick="showImageSection('appleice')">애플민트</button></div>
+   <div><button onclick="showImageSection('blacksorbet')">블랙소르베</button></div>
+   <div><button onclick="showImageSection('grapesherbet')">포도샤베트</button></div>
+   <div><button onclick="showImageSection('milksalt')">우유소금</button></div>
+   <div><button onclick="showImageSection('honeycrunch')">허니크런치</button></div>
+   <div><button onclick="showImageSection('greentea')">녹차</button></div>
+   <div><button onclick="showImageSection('amond')">피스타치오아몬드</button></div>
+</div>
+<!-- 모달 외부에 이미지 표시 -->
+<img id="icecreamDisplay" src="/images/appleice.JPG" style="display:none; position:fixed; top:100px; right:30px; width:250px; z-index:9999; border:2px solid #ccc; border-radius:10px;" />
 
-<img id="icecreamDisplay" src="/images/appleice.JPG"
-     alt="애플민트 아이스크림"
-     style="display: none; top: 20px; right: 500px; width: 600px; z-index: 1; border-radius: 8px;">
-  
-
- 
+<!-- 모달 외부에 이미지 표시 -->
 <script>
-const imageMap = {
-        appleice: "/images/appleice.JPG",
-        blacksorbet: "/images/blackice.JPG",
-        grapesherbet: "/images/grapeice.JPG",
-        milksalt: "/images/milkice.JPG",
-        honeycrunch: "/images/honeyice.JPG",
-        greentea: "/images/greentea.JPG",
-        amond: "/images/amond.JPG"
-      };
+  // 이미지 경로 매핑
+  const imageMap = {
+    appleice: "/images/appleice.JPG",
+    blacksorbet: "/images/blackice.JPG",
+    grapesherbet: "/images/grapeice.JPG",
+    milksalt: "/images/milkice.JPG",
+    honeycrunch: "/images/honeyice.JPG",
+    greentea: "/images/greentea.JPG",
+    amond: "/images/amond.JPG"
+  };
+  const flavorNames = {
+          appleice: "애플민트 아이스크림",
+          blacksorbet: "블랙소르베 아이스크림",
+          grapesherbet: "포도샤베트 아이스크림",
+          milksalt: "우유소금 아이스크림",
+          honeycrunch: "허니크런치 아이스크림",
+          greentea: "녹차 아이스크림",
+          amond: "피스타치오아몬드 아이스크림"
+       };
 
-      // 하나로 통일된 이미지 표시 함수
-      function showImageSection(key) {
-        const displayImage = document.getElementById("icecreamDisplay");
-        const imagePath = imageMap[key];
+  // 이미지 표시 함수
+  function showImageSection(key) {
+    const displayImage = document.getElementById("icecreamDisplay");
+    const imagePath = imageMap[key];
 
-        if (imagePath) {
-          displayImage.src = imagePath;
-          displayImage.style.display = "block";
-        } else {
-          console.warn("해당 키에 대한 이미지 경로가 없습니다:", key);
-        }
-      }
-
+    if (imagePath) {
+      displayImage.src = imagePath;
+      displayImage.alt = flavorNames[key] ||
+      displayImage.style.display = "block";
+    } else {
+      console.warn('해당 키에 대한 이미지 경로가 없습니다:', key);
+      displayImage.style.display = "none"; // 이미지를 숨김
+    }
+  }
+  window.onclick = function(event) {
+	     const modals = ["signModal", "loginModal", "menuModal"];
+	     modals.forEach(id => {
+	       const modal = document.getElementById(id);
+	       if (modal && event.target === modal) {
+	         modal.style.display = "none";
+	       }
   // 모달 열기 함수
  function openModal(id) {
   document.getElementById(id).style.display = 'block';
 }
- function showImageSection(name) {
-     const img = document.getElementById("icecreamDisplay");
-     img.src = "/images/" + name + ".JPG"; // 확장자도 정확히 맞춰야 함
-     img.style.display = "block";
-   }
-
- function showImageSection(flavor) {
-   // 이미지 요소 가져오기
-   const imgElement = document.getElementById('icecreamDisplay');
-
-   // 이미지 경로 설정 (flavor 인자를 통해 동적으로 변경)
-   imgElement.src = `/images/${flavor}.JPG`;
-
-   // 이미지 alt 텍스트 설정 (옵션)
-   const flavorNames = {
-     appleice: "애플민트 아이스크림",
-     blacksorbet: "블랙소르베 아이스크림",
-     grapesherbet: "포도샤베트 아이스크림",
-     milksalt: "우유소금 아이스크림",
-     honeycrunch: "허니크런치 아이스크림",
-     greentea: "녹차 아이스크림",
-     amond: "피스타치오아몬드 아이스크림"
-   };
-   imgElement.alt = flavorNames[flavor] || "선택된 아이스크림";
-
-   // 이미지 표시
-   imgElement.style.display = 'block';
- }
-
-
+ function closeModal(id) {
+	  document.getElementById(id).style.display = 'none';
+	}
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
 }
+function showImageSection(name) {
+	const img = document.getElementById("icecreamDisplay");
+	img.src = "/images/" + name + "JPG";
+	img.style.display="block";
+}
+function showImageSection(flavor) {
+	   // 이미지 요소 가져오기
+	   const imgElement = document.getElementById('icecreamDisplay');
 
-  window.onclick = function(event) {
-     const modals = ["signModal", "loginModal", "menuModal"];
-     modals.forEach(id => {
-       const modal = document.getElementById(id);
-       if (modal && event.target === modal) {
-         modal.style.display = "none";
-       }
-     });
-   };
+	   // 이미지 경로 설정 (flavor 인자를 통해 동적으로 변경)
+	   imgElement.src = `/images/${flavor}.JPG`;
+
+	   // 이미지 alt 텍스트 설정 (옵션)
+	   const flavorNames = {
+	     appleice: "애플민트 아이스크림",
+	     blacksorbet: "블랙소르베 아이스크림",
+	     grapesherbet: "포도샤베트 아이스크림",
+	     milksalt: "우유소금 아이스크림",
+	     honeycrunch: "허니크런치 아이스크림",
+	     greentea: "녹차 아이스크림",
+	     amond: "피스타치오아몬드 아이스크림"
+	   };
+	   imgElement.alt = flavorNames[flavor] || "선택된 아이스크림";
+
+	   // 이미지 표시
+	   imgElement.style.display = 'block';
+	 }
+	 
+window.onclick = function(event) {
+    const menu = document.getElementById("icecreamMenu");
+    // 클릭된 곳이 메뉴 영역이나 메뉴 열기 버튼이 아닐 경우 메뉴를 닫음
+    if (!menu.contains(event.target) && !event.target.matches('.menu-item')) {
+        menu.style.display = "none";
+    }
+}; 
+	     });
+	   };
+
+
 </script>
 </body>
 </html>
