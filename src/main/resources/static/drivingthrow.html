@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="/static/css/login.css" />
   <link rel="stylesheet" href="/static/css/main.css" />
   <link rel="stylesheet" href="/static/css/menu.css" />
-  <link rel="stylesheet" href="/static/css/driving.css" />
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  
@@ -222,10 +221,10 @@
   <!-- 메뉴 모달 -->
   <div id="menuModal" class="hidden menu_popup">
     <span class="close" onclick="closeModal('menuModal')">&times;</span>
-  <div id="menuModalCoffee">
     <div class="modal_header" style="display: flex; text-align: center">
-     <h2>커피</h2>    
+    <h2 id="coffeeHeader">커피</h2>    
     </div>
+    <div id="coffeeItems" class="hidden-items">
     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>에스프레소</a>
     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>블렌디드</a>
     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>카페라테</a>

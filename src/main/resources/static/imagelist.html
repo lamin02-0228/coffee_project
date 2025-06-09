@@ -1,410 +1,932 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Documents</title>
-  <link rel="stylesheet" href="/static/css/sign.css" />
-  <link rel="stylesheet" href="/static/css/login.css" />
-  <link rel="stylesheet" href="/static/css/main.css" />
-  <link rel="stylesheet" href="/static/css/menu.css" />
-  <link rel="stylesheet" href="/static/css/driving.css" />
-  <link rel="stylesheet" href="/static/css/imagelist.css" />
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Documents</title>
+<link rel="stylesheet" href="/static/css/sign.css" />
+<link rel="stylesheet" href="/static/css/login.css" />
+<link rel="stylesheet" href="/static/css/main.css" />
+<link rel="stylesheet" href="/static/css/menu.css" />
+<link rel="stylesheet" href="/static/css/driving.css" />
+<link rel="stylesheet" href="/static/css/imagelist.css" />
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
-      @font-face {
-      font-family: 'NanumBaReunHiPi';
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-      src: url('https://cdn.jsdelivr.net/gh/fonts-archive/NanumBaReunHiPi/NanumBaReunHiPi.woff2') format('woff2'),
-           url('https://cdn.jsdelivr.net/gh/fonts-archive/NanumBaReunHiPi/NanumBaReunHiPi.woff') format('woff'),
-           url('https://cdn.jsdelivr.net/gh/fonts-archive/NanumBaReunHiPi/NanumBaReunHiPi.ttf') format('truetype');
-    }
-
-    body, html, * {
-      font-family: 'NanumBaReunHiPi', sans-serif;
-    }
-  
-    .background-wrapper {
-      position: relative;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100vh;
-      z-index: 1;
-    }
-
-    .background-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 1;
-    }
-
-    .top_bar {
-      display: flex;
-      justify-content: flex-end;
-      padding: 10px;
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-    }
-
-    .top_bar a {
-      color: #5D1900;
-      text-decoration: none;
-      margin-left: 10px;
-      font-size: 25px;
-      text-shadow: 2px 2px 4px white;
-      background-color: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(8px);
-      padding: 30px;
-      border-radius: 10px;
-      
-      }
-
-   .nav_bar {
-       position: fixed;
-       top: 60px;
-       bottom: 0;
-       width: 180px;
-       z-index: 500;
-       font-weight: bold;
-       font-family: 'NanumBaReunHiPi', sans-serif;
-         background-color: rgba(255, 240, 220, 0.5); 
-       backdrop-filter: blur(8px); /* 흐림 효과는 한 번만 */
-       color: #FFBB00;
-       padding: 30px 15px;
-       border-top-right-radius: 20px;
-       border-bottom-right-radius: 20px;
-       display: flex;
-       flex-direction: column;
-       align-items: flex-start;
-       overflow-y: auto;
-       box-sizing: border-box;
-   }
-
-   .nav_bar a {
-       display: inline-block;
-       white-space: nowrap;
-       font-size: 40px;
-       margin-bottom: 10px;
-       text-align: left;
-       color: #5D1900;
-       text-decoration: none;
-       opacity: 1;
-       text-shadow: 10px 2px 5px white;
-       position: relative;
-       line-height: 1.4;
-       padding: 10px 5px;
-       background-color: transparent; /* 배경 제거 */
-       backdrop-filter: none; /* 흐림 제거 */
-       border-bottom-right-radius: 0;
-       height: calc(100vh - 60px - 80px);
-
-   
+/* 모든 CSS 스타일은 그대로 유지 */
+@font-face {
+font-family: 'NanumBaReunHiPi';
+font-weight: normal;
+font-style: normal;
+font-display: swap;
+src: url('https://cdn.jsdelivr.net/gh/fonts-archive/NanumBaReunHiPi/NanumBaReunHiPi.woff2') format('woff2'),
+url('https://cdn.jsdelivr.net/gh/fonts-archive/NanumBaReunHiPi/NanumBaReunHiPi.woff') format('woff'),
+url('https://cdn.jsdelivr.net/gh/fonts-archive/NanumBaReunHiPi/NanumBaReunHiPi.ttf') format('truetype');
 }
-   
 
-   .modal {
-     display: none;
-     position: fixed;
-     z-index: 1000;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     background-color: rgba(255, 255, 255, 0.5);
-     right:100px;
+body, html, * { font-family: 'NanumBaReunHiPi', sans-serif; }
 
-
+.background-wrapper { position: relative; top: 0; left: 0; width: 100%; height: 100vh; z-index: 1; }
+.background-wrapper img { width: 100%; height: 100%; object-fit: cover; opacity: 1; }
+.top_bar { display: flex; justify-content: flex-end; padding: 10px; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
+.top_bar a { color: #5D1900; text-decoration: none; margin-left: 10px; font-size: 25px; text-shadow: 2px 2px 4px white; background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(8px); padding: 30px; border-radius: 10px; }
+.nav_bar { position: fixed; top: 60px; bottom: 0; width: 180px; z-index: 500; font-weight: bold; background-color: rgba(255, 240, 220, 0.5); backdrop-filter: blur(8px); color: #FFBB00; padding: 30px 15px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; display: flex; flex-direction: column; align-items: flex-start; overflow-y: auto; box-sizing: border-box; }
+.nav_bar a { display: inline-block; white-space: nowrap; font-size: 40px; margin-bottom: 10px; text-align: left; color: #5D1900; text-decoration: none; opacity: 1; text-shadow: 10px 2px 5px white; position: relative; line-height: 1.4; padding: 10px 5px; background-color: transparent; backdrop-filter: none; border-bottom-right-radius: 0; }
+.modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.5); }
+.menu_popup .close { font-size: 30px; font-weight: bold; color: white; position: absolute; top: 10px; right: 20px; cursor: pointer; z-index: 1002; }
+.modal-content { background-color: rgba(255, 255, 255, 0.5); margin: 10% auto; padding: 20px; width: 400px; border-radius: 10px; position: relative; line-height: 1.5; color: #813D00; right:200px; }
+.close { position: absolute; top: 10px; right: 15px; font-size: 24px; font-weight: bold; cursor: pointer; }
+.menu_popup { display: none; /* 기본값을 none으로 변경 */ position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 240, 220, 0.7); backdrop-filter: blur(10px); border: 1px solid #ccc; padding: 20px; z-index: 1000; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); border-radius: 10px; width: auto; text-align: center; font-size: 20px; color: #813D00; }
+/* 스무디 관련 CSS 추가/수정 */
+.icecream-sub, .coffee-sub, .bread-sub, .cake-sub, .sandwitch-sub, .smoothy-sub, .dessert-sub { /* .smoothy-sub 추가 */
+    display: none; /* 기본값을 none으로 변경 */
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+    align-items: center;
 }
-.menu_popup .close {
-  font-size: 30px;
-  font-weight: bold;
-  color: white;
+
+.icecream-sub button, .bread-sub button, .cake-sub button, .sandwitch-sub button, .smoothy-sub button, .coffee-sub button, .dessert-sub button  { /* .smoothy-sub button 추가 */
+    background-color:  rgba(255, 144, 144, 0.90);
+    color: #425518;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 150px;
+}
+
+.icecream-sub button:hover, .bread-sub button:hover, .cake-sub button:hover, .sandwitch-sub button:hover, .smoothy-sub button:hover, .coffee-sub button:hover { /* .smoothy-sub button:hover 추가 */
+    background-color: #FF6C6C !important;
+}
+
+.option-overlay.option-dessert {
   position: absolute;
-  top: 10px;
-  right: 20px;
-  cursor: pointer;
-  z-index: 1002;
+  top: 300px;    /* 위에서부터 50px 떨어진 위치 */
+  left: 160px;  /* 왼쪽에서부터 100px 떨어진 위치 */
+  background-color: rgba(255, 144, 144, 0.90);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  z-index: 3000;
+}
+.option-overlay.option-icecream {
+  position: absolute;
+  top: 110px;
+  left: 3px;
+  background-color: rgba(255, 144, 144, 0.90);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  z-index: 3000; 
+}
+
+.option-overlay.option-coffee {
+ position: absolute;
+  top: 30px;
+  left: 120px;
+  background-color: rgba(255, 144, 144, 0.90);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  z-index: 3000; 
+
+}
+
+.option-overlay.option-smoothy {
+ position: absolute;
+  top: 8px;
+  left: 160px;
+  background-color: rgba(255, 144, 144, 0.90);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  z-index: 3000; 
+
 }
 
 
-   .modal-content {
-     background-color: rgba(255, 255, 255, 0.5);
-     margin: 10% auto;
-     padding: 20px;
-     width: 400px;
-     border-radius: 10px;
-     position: relative;
-     font-family: 'NanumBaReunHiPi', sans-serif;
-     line-height: 1.5;
-     color: #813D00;
-     right:200px;
-   }
+#icecreamDisplay, #breadDisplay, #cakeDisplay, #sandwitchDisplay, #smoothyDisplay, #coffeeDisplay { /* #smoothyDisplay 추가 */
+    display: none; /* 초기에는 숨김 */
+    position: fixed;
+    top: 50%;
+    right: 40px; 
+    transform: translateY(-50%);
+    width: 350px;
+    z-index: 9999;
+    border: 2px solid #FFFFFF;
+    background: #FFFFFF;
+    right:40px;
+}
 
 
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 24px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.btn-back {
+background-color: #E1FF36; /* 다른 버튼과 구분되는 회색 계열 색상 */
+color: #1B6200;
+font-weight: bold;
+}
+
+.btn-back:hover {
+background-color: #d1d1d1 !important; /* important를 사용해 hover 스타일 우선 적용 */
+
+}
+
+ .option-overlay {
+ position: absolute;        
+ top: 50px;   
+ left: 200px;               
+ background-color: rgba(255, 144, 144, 0.90); /* 약간 반투명 배경 */
+ padding: 20px 20px;
+ border-radius: 8px;
+ box-shadow: 0 0 8px rgba(0,0,0,0.2);
+ z-index: 3000;  
+  }
    
-    .menu_popup {
-      position: fixed;
-      top: 20%;
-      left: 30%;
-      transform: translate(calc(-40% - 30px), -20%);
-      background-color: rgba(255, 255, 255, 0.5);
-       border: 1px solid #ccc;
-       padding: 20px;
-       z-index: 1000;
-       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-       border-radius: 10px;
-       width: auto;
-       text-align: center;
-       font-size: 20px;
-       font-family: 'NanumBaReunHiPi', sans-serif;
-       right: bold;         
-       line-height: 1.5;
-       color: #813D00;
-    }
- .icecream-sub {
-  display: none; 
-  z-index: 1000;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  display:flex;
-  }   
-.icecream-sub button {
-  background-color: #E0FF8B;
-  color: #425518;
-  padding: 8px 10px;
-  border-radius: 6px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100px;
-  gap: 10px;
-  flex-wrap: wrap;    
-}
-
-.icecream-sub button:hover {
-  background-color: #E4F7BA;
-  color: #425518;
-}
-
-    .hidden {
-      display: none;
-    }
-    
-  .icecreamDisplay {
-      position: absolute; /* Changed to absolute to position relative to body/wrapper */
-      top: 20px; /* Adjust as needed */
-      right: 700px; /* Adjust as needed */
-      transform: translate(-50%, -50%); /* Center the image */
-      width: 600px;
-      z-index: 2000; /* Ensure it's below modals but above background */
-      border-radius: 8px;
-    }   
- </style>
-
+</style>
 </head>
+
 <body>
-  <header>
-    <nav class="top_bar">
-      <a href="#" onclick="document.getElementById('signModal').style.display='block'">회원가입</a>
-      <a href="#" onclick="document.getElementById('loginModal').style.display='block'">로그인</a>
-    </nav>
-  </header>
+<header>
+<nav class="top_bar">
+<a href="#" onclick="openModal('signModal')">회원가입</a>
+<a href="#" onclick="openModal('loginModal')">로그인</a>
+</nav>
+</header>
 
-  <aside>
-    <div class="nav_bar">
-      <a href="#" onclick="document.getElementById('menuModal').style.display='block'">메뉴</a>
-      <a href="./ordernow">주문현황</a>
-      <a href="./cafeplace">카페위치</a>
-      <a href="./cafereview">카페후기</a>
-      <a href="./drivingthrow">드라이빙스루</a>
-    </div>
-  </aside>
-  
-  <div id="signModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('signModal')">&times;</span>
-      <h2>회원가입하기</h2>
-      <form action="${pageContext.request.contextPath}/cafe/signmodal.html" method="post">
-        <input type="text" name="id" placeholder="아이디" required><br>
-        <input type="text" name="pwd" placeholder="비밀번호" required><br>
-        <input type="text" name="name" placeholder="이름" required><br>
-        <input type="text" name="phone" placeholder="전화번호" required><br>
-        <input type="text" name="address" placeholder="주소" required><br>
-        <button type="submit">가입하기</button>
-      </form>  
-    </div>
-  </div>
-  <div id="loginModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('loginModal')">&times;</span>
-      <h3>로그인하기</h3>
-      <form action="${pageContext.request.contextPath}/cafe/loginmodal.html" method="post">
-        <input type="text" name="id" placeholder="아이디" required><br>
-        <input type="text" name="pwd" placeholder="비밀번호" required><br>
-        <button type="submit">로그인하기</button>
-        <button type="button">비밀번호찾기</button>
-      </form>
-    </div>
-  </div>
-  
-  <div class="background-wrapper" style="position: relative; width: 100%; height: 100vh;">
-  <img src="./images/coffee.jpg" alt="배경 이미지" 
-        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
-  
-    <img id="icecreamDisplay" src="/images/appleice.JPG"
-         alt="애플민트 아이스크림"
-         style="display: none;">
-
-  <div id="menuModal" class="menu_popup">
-   <span class="close" onclick="closeModal('menuModal')">&times;</span>
-       <div id="menuModalCoffee">
-     <div class="modal_header" style="display: flex; text-align: center">
-       <h2>커피</h2>     
-     </div>
-     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>에스프레소</a>
-     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>돌체라떼</a>
-     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>카페라테</a>
-     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>아메리카노</a>
-     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>카푸치노</a>
-     <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>프라푸치노</a>
-     </div>
-     <div id="menuModalSmoothy">
-         <div class="smoothy-categories">
-         <div class="modal_header" style="display: flex; text-align: center">
-         <h3>스무디</h3>
-         </div>
-       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>허니자몽</a>
-       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>허니레몬</a>
-       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>아보카도바나나</a>
-       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>논산딸기</a>
-       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-coffee"></i>블루베리</a>
-     </div>
-       <div id="menuModalDessert">
-     <div class="dessert-categories">
-       <div class="modal_header" style="display: flex; text-align: center">
-         <h4>디저트</h4>
-       </div>
-       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>샌드위치</a>
-       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>케이크</a>
-       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>브레드</a>
-       <a href="/imagelist.html" class="menu-item" style="color: #813D00;"><i class="fa fa-birthday-cake"></i>아이스크림</a>
-   <a href="javascript:void(0);" class="menu-item" style="color: #813D00;" onclick="toggleIcecreamSub()"></a> 
-   <div class="icecream-sub" id="icecreamMenu">
-       <div><button onclick="showImageSection('appleice')">애플민트</button></div>
-   <div><button onclick="showImageSection('blacksorbet')">블랙소르베</button></div>
-   <div><button onclick="showImageSection('grapesherbet')">포도샤베트</button></div>
-   <div><button onclick="showImageSection('milksalt')">우유소금</button></div>
-   <div><button onclick="showImageSection('honeycrunch')">허니크런치</button></div>
-   <div><button onclick="showImageSection('greentea')">녹차</button></div>
-   <div><button onclick="showImageSection('amond')">피스타치오아몬드</button></div>
+<aside>
+<div class="nav_bar">
+<a href="#" onclick="openModal('menuModal')">메뉴</a>
+<a href="./ordernow">주문현황</a>
+<a href="./cafeplace">카페위치</a>
+<a href="./cafereview">카페후기</a>
+<a href="./drivingthrow">드라이빙스루</a>
 </div>
-<!-- 모달 외부에 이미지 표시 -->
-<img id="icecreamDisplay" src="/images/appleice.JPG" style="display:none; position:fixed; top:100px; right:30px; width:250px; z-index:9999; border:2px solid #ccc; border-radius:10px;" />
+</aside>
 
-<!-- 모달 외부에 이미지 표시 -->
+<div id="signModal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('signModal')">&times;</span>
+<h2>회원가입하기</h2>
+<form action="#" method="post">
+<input type="text" name="id" placeholder="아이디" required><br>
+<input type="text" name="pwd" placeholder="비밀번호" required><br>
+<input type="text" name="name" placeholder="이름" required><br>
+<input type="text" name="phone" placeholder="전화번호" required><br>
+<input type="text" name="address" placeholder="주소" required><br>
+<button type="submit">가입하기</button>
+</form>
+</div>
+</div>
+
+<div id="loginModal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('loginModal')">&times;</span>
+<h3>로그인하기</h3>
+<form action="#" method="post">
+<input type="text" name="id" placeholder="아이디" required><br>
+<input type="text" name="pwd" placeholder="비밀번호" required><br>
+<button type="submit">로그인하기</button>
+<button type="button">비밀번호찾기</button>
+</form>
+</div>
+</div>
+
+<div class="background-wrapper">
+<img src="./images/coffee.jpg" alt="배경 이미지">
+</div>
+<div class="menu-item">
+<h4>메뉴</h4>
+<img id="sandwitchDisplay" src="" alt="선택된 샌드위치">
+<img id="cakeDisplay" src="" alt="선택된 케이크">
+<div class="option-overlay option-bread">
+  <p><strong>케이크 옵션</strong></p>
+     <select name="cake" id="cake">
+    <fieldset>
+     <legend>생일초/칼 추가</legend>
+     <input type="checkbox" id="생일초/칼/고깔모" name="생일초/칼/고깔모" value="생일초/칼/고깔모">
+     <label for="생일초 추가">생일초 추가</label><br>
+     <label for="칼 추가">칼 추가</label><br>
+     <label for="고깔모 추가">고깔모 추가</label><br>
+     <optgroup label="수량">
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+       <option value="4">4</option>
+       <option value="5">5</option>
+       </optgroup>
+       
+<img id="breadDisplay" src="" alt="선택된 빵">
+<div class="option-overlay option-dessert">
+  <p><strong>디저트 옵션</strong></p>
+     <select name="bread" id="bread">
+     <optgroup label="빵종류">
+     <option value="호밀빵">호밀빵</option>
+     <option value="통밀빵">통밀빵</option>
+     <option value="허니오트">허니오트</option>
+     </optgroup>
+     <optgroup label="수량">
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+       <option value="4">4</option>
+       <option value="5">5</option>
+       </optgroup>
+       </select> 
+    </div>
+</div>
+<img id="coffeeDisplay" src="" alt="선택된 커피">
+<div class="option-overlay option-bread">
+  <p><strong>커피 옵션</strong></p>
+     <select name="coffee" id="coffee">
+     <fieldset>
+     <legend>샷 추가</legend>
+     <input type="checkbox" id="1/2샷" name="1/2샷" value="1/2샷">
+     <label for="1/2샷">1/2샷</label><br>
+     <input type="checkbox" id="1샷" name="1샷" value="1샷">
+     <label for="1샷">1샷</label><br>
+     <input type="checkbox" id="2샷" name="2샷" value="2샷">
+     <label for="2샷">2샷</label><br> 
+     </fieldset>
+     <fieldset>
+     <legend>물/얼음 추가</legend>
+     <input type="checkbox" id="물양" name="물양" value="물양">
+     <label for="적게">적게</label><br>
+     <label for="보통">보통</label><br>
+     <label for="많이">많이</label><br>
+     <input type="checkbox" id="얼음양" name="얼음양" value="얼음양">
+     <label for="적게">적게</label><br>
+     <label for="적게">보통</label><br>
+     <label for="적게">많이</label><br> 
+     </fieldset>
+     <select name="coffee" id="coffee">
+     <optgroup label="커피옵션">
+     <option value="테이크아웃/매장이용">테이크아웃/매장이용</option>
+     </optgroup>
+     <optgroup label="수량">
+     <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+       <option value="4">4</option>
+       <option value="5">5</option>
+       </optgroup>
+       </select>
+<img id="smoothyDisplay" src="" alt="선택된 스무디">
+<div class="option-overlay option-smoothy">
+  <p><strong>스무디 옵션</strong></p>
+     <select name="smoothy" id="smoothy">
+       <optgroup label="스무디종류">
+       <option value="테이크아웃/매장이용">테이크아웃/매장이용</option>
+       </optgroup>
+       <optgroup label="수량">
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+       <option value="4">4</option>
+       <option value="5">5</option>
+       </optgroup>
+       </select> 
+<img id="icecreamDisplay" src="" alt="선택된 아이스크림">
+<div class="option-overlay option-icecream">
+  <p><strong>아이스크림 옵션</strong></p>
+     <select name="icecream" id="icecream">
+       <optgroup label="아이스크림종류">
+       <option value="스푼">스푼</option>
+       <option value="컵/콘">컵/콘</option>
+       <option value="테이크아웃/매장이용">테이크아웃/매장이용</option>
+       </optgroup>
+       <optgroup label="수량">
+       <option value="1">1</option>
+       <option value="2">2</option>
+       <option value="3">3</option>
+       <option value="4">4</option>
+       <option value="5">5</option>
+       </optgroup>
+       </select> 
+    </div>
+</div>
+</div>
+ 
+<div id="menuModal" class="menu_popup">
+<span class="close" onclick="closeModal('menuModal')">&times;</span>
+<div id="menuModalCoffee">
+ <div class="coffee-categories">
+    <h4>커피</h4>
+   <a href="javascript:void(0);" class="menu-item" style="color: #813D00;" onclick="toggleCoffeeSub()">
+    <i class="fa fa-coffee"></i> 커피 종류 보기</a>
+     <div class="coffee-sub" id="coffeeMenu" style="display: none;"> 
+     <div><button class="btn-back" onclick="toggleCoffeeSub()">↑ 상위 메뉴로</button></div>
+     <hr style="width: 80%; margin: 10px 0;">
+     <button onclick="showImageSection('espresso')">에스프레소</button>
+     <button onclick="showImageSection('americano')">아메리카노</button>
+     <button onclick="showImageSection('cafelatte')">카페라떼</button>
+     <button onclick="showImageSection('capuccino')">카푸치노</button>
+     <button onclick="showImageSection('einspanner')">아인슈페너</button>
+     <button onclick="showImageSection('dolcelatte')">돌체라떼</button>
+     <button onclick="showImageSection('chocolat')">쇼콜라라떼</button>
+     <button onclick="showImageSection('frappuccino')">프라푸치노</button>  
+     <button onclick="showImageSection('coldblue')">콜드블루</button>          
+            </div>
+        
+<div id ="menuModalSmoothy">
+    <div class="smoothy-categories">
+ <h5>스무디</h5>
+ <a href="javascript:void(0);" class="menu-item" style="color: #813D00;" onclick="toggleSmoothySub()">
+ <i class="fa fa-coffee"></i> 스무디 종류 보기</a>
+ <div class="smoothy-sub" id="smoothyMenu">
+ <div><button class="btn-back" onclick="toggleSmoothySub()">↑ 상위 메뉴로</button></div>
+ <hr style="width: 80%; margin: 10px 0;">
+       <button onclick="showImageSection('honeygrapefruit')">허니자몽</button>
+       <button onclick="showImageSection('honeylemon')">허니레몬</button>
+       <button onclick="showImageSection('avocadobanana')">아보카도바나나</button>
+       <button onclick="showImageSection('strawberry')">논산딸기</button>
+       <button onclick="showImageSection('blueberry')">블루베리</button>
+        </div>
+        
+<div id ="menuModalDessert">
+    <div class="dessert-categories">
+     <h6>디저트</h6>
+ <a href="javascript:void(0);" class="menu-item" style="color: #813D00;" onclick="toggleDessertSub()">
+ <i class="fa fa-coffee"></i>디저트 종류 보기</a>
+  <div class="dessert-sub" id="dessertMenu">
+  <div><button class="btn-back" onclick="toggleDessertSub()">↑ 상위 메뉴로</button></div>
+  <hr style="width: 80%; margin: 10px 0;">
+<a href="javascript:void(0);" class="menu-item" style="color: #813D00;" onclick="toggleSandwitchSub()">                
+<i class="fa fa-birthday-cake"></i>샌드위치</a>
+<a href="javascript:void(0);" class="menu-item" style="color: #813D00;" onclick="toggleCakeSub()">
+<i class="fa fa-birthday-cake"></i>케이크</a>
+<a href="javascript:void(0);" class="menu-item" style="color: #813D00;" onclick="toggleBreadSub()">
+<i class="fa fa-birthday-cake"></i>브레드</a>
+<a href="javascript:void(0);" class="menu-item" style="color: #813D00;" onclick="toggleIcecreamSub()">
+<i class="fa fa-birthday-cake"></i>아이스크림</a>
+</div>
+
+<div class="bread-sub" id="breadMenu">
+<div><button class="btn-back" onclick="toggleBreadSub()">↑ 상위 메뉴로</button></div>
+<hr style="width: 80%; margin: 10px 0;">
+<button onclick="showImageSection('milkscone')">밀크스콘</button>
+<button onclick="showImageSection('cookie')">쿠키</button>
+<button onclick="showImageSection('scone')">스콘</button>
+<button onclick="showImageSection('bruton')">브루통</button>
+<button onclick="showImageSection('macaron')">마카롱</button>
+<button onclick="showImageSection('pagete')">파게트</button>
+</div>
+
+<div class="icecream-sub" id="icecreamMenu">
+<button class="btn-back" onclick="toggleIcecreamSub()">↑ 상위 메뉴로</button>
+<hr style="width: 80%; margin: 10px 0;">
+<button onclick="showImageSection('appleice')">애플민트</button>
+<button onclick="showImageSection('blacksorbet')">블랙소르베</button>
+<button onclick="showImageSection('grapesherbet')">포도샤베트</button>
+<button onclick="showImageSection('milksalt')">우유소금</button>
+<button onclick="showImageSection('honeycrunch')">허니크런치</button>
+<button onclick="showImageSection('greentea')">녹차</button>
+<button onclick="showImageSection('amond')">피스타치오아몬드</button>
+</div>
+
+<div class="cake-sub" id="cakeMenu">
+<div><button class="btn-back" onclick="toggleCakeSub()">↑ 상위 메뉴로</button></div>
+<hr style="width: 80%; margin: 10px 0;">
+<button onclick="showImageSection('chococake')">초코케이크</button>
+<button onclick="showImageSection('blueberrycake')">블루베리케이크</button>
+<button onclick="showImageSection('strawberrycake')">딸기케이크</button>
+<button onclick="showImageSection('3cake')">3가지맛케이크</button>
+<button onclick="showImageSection('milk')">밀크케이크</button>
+<button onclick="showImageSection('catelet')">당근케이크</button>
+</div>
+
+<div class="sandwitch-sub" id="sandwitchMenu">
+<div><button class="btn-back" onclick="toggleSandwitchSub()">↑ 상위 메뉴로</button></div>
+<hr style="width: 80%; margin: 10px 0;">
+<button onclick="showImageSection('tunasand')">튜나샌드위치</button>
+<button onclick="showImageSection('chickensand')">치킨샌드위치</button>
+<button onclick="showImageSection('eggsand')">에그샌드위치</button>
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
 <script>
-  // 이미지 경로 매핑
-  const imageMap = {
+function toggleCoffeeSub() {
+    const coffeeMenu = document.getElementById("coffeeMenu");
+    if (coffeeMenu.style.display === "none" || coffeeMenu.style.display === "") {
+      coffeeMenu.style.display = "block"; // 보이게
+    } else {
+      coffeeMenu.style.display = "none"; // 숨기기
+    }
+  }
+  
+function toggleCoffeeSub() {
+    const coffeeMenu = document.getElementById('coffeeMenu');
+    if (coffeeMenu.style.display === 'none') {
+      coffeeMenu.style.display = 'block'; // Show the submenu
+    } else {
+      coffeeMenu.style.display = 'none'; // Hide the submenu
+    }
+  }
+// 1. 이미지 및 이름 데이터
+const imageMap = {
+		
+    espresso: "/images/espresso.JPG",
+	americano: "/images/americano.JPG",
+	cafelatte: "/images/cafelatte.JPG",
+    capuccino: "/images/capuccino.JPG",
+	einspanner: "/images/einspanner.JPG",
+    dolcelatte: "/images/dolce.JPG",
+    chocolat: "/images/chocolat.JPG",
+    frappuccino: "/images/frappuccino.JPG",	
+	coldblue: "/images/coldblue.JPG",
+		
+		
     appleice: "/images/appleice.JPG",
     blacksorbet: "/images/blackice.JPG",
     grapesherbet: "/images/grapeice.JPG",
     milksalt: "/images/milkice.JPG",
     honeycrunch: "/images/honeyice.JPG",
     greentea: "/images/greentea.JPG",
-    amond: "/images/amond.JPG"
-  };
-  const flavorNames = {
-          appleice: "애플민트 아이스크림",
-          blacksorbet: "블랙소르베 아이스크림",
-          grapesherbet: "포도샤베트 아이스크림",
-          milksalt: "우유소금 아이스크림",
-          honeycrunch: "허니크런치 아이스크림",
-          greentea: "녹차 아이스크림",
-          amond: "피스타치오아몬드 아이스크림"
-       };
+    amond: "/images/amond.JPG",
 
-  // 이미지 표시 함수
-  function showImageSection(key) {
-    const displayImage = document.getElementById("icecreamDisplay");
+    milkscone: "/images/milkscon.JPG",
+    cookie: "/images/cookie.JPG",
+    scone: "/images/scon2.JPG",
+    bruton: "/images/tong.JPG",
+    macaron: "/images/carong.JPG",
+    pagete: "/images/pagete.JPG",
+
+    chococake: "/images/chococake.JPG",
+    blueberrycake: "/images/blueberry.JPG",
+    strawberrycake: "/images/strawberry.JPG",
+    cake3: "/images/cake3.JPG",
+    milk: "/images/milkcake.JPG",
+    catelet: "/images/cateletcake.JPG",
+
+    tunasand: "/images/tunasand.JPG",
+    chickensand: "/images/chickensand.JPG",
+    eggsand: "/images/eggsand.JPG",
+
+    // 스무디 이미지 추가 (파일명 확인 필요)
+    honeygrapefruit: "/images/fruit.JPG",
+    honeylemon: "/images/lemon.JPG",
+    avocadobanana: "/images/avocado.JPG",
+    strawberry: "/images/q.JPG", // 실제 파일명과 매칭되는지 확인 필요
+    blueberry: "/images/l.JPG",   // 실제 파일명과 매칭되는지 확인 필요
+};
+
+const flavorNames = {
+		
+    espresso: "에스프레소 커피",
+	americano: "아메리카노 커피",
+	cafelatte: "카페라떼 커피",
+	capuccino: "카푸치노 커피",
+	einspanner: "아인슈페너 커피",
+	dolcelatte: "돌체라떼 커피",
+	chocolat: "쇼콜라프레소 커피",
+	frappuccino: "프라푸치노 커피",	
+	coldblue: "콜드블루 커피",
+	
+    appleice: "애플민트 아이스크림",
+    blacksorbet: "블랙소르베 아이스크림",
+    grapesherbet: "포도샤베트 아이스크림",
+    milksalt: "우유소금 아이스크림",
+    honeycrunch: "허니크런치 아이스크림",
+    greentea: "녹차 아이스크림",
+    amond: "피스타치오아몬드 아이스크림",
+
+    milkscone: "밀크스콘",
+    cookie: "쿠키",
+    scone: "스콘",
+    bruton: "브루통",
+    macaron: "마카롱",
+    pagete: "파게트",
+
+    chococake: "초코케이크",
+    blueberrycake: "블루베리케이크",
+    strawberrycake: "딸기케이크",
+    cake3: "3가지맛케이크",
+    milk: "밀크케이크",
+    catelet: "당근케이크",
+    
+    tunasand: "튜나샌드위치",
+    chickensand: "치킨샌드위치",
+    eggsand: "에그샌드위치",
+    
+    // 스무디 이름 추가
+    honeygrapefruit: "허니자몽",
+    honeylemon: "허니레몬",
+    avocadobanana: "아보카도바나나",
+    strawberry: "논산딸기",
+    blueberry: "블루베리",
+};
+
+// 모든 이미지 표시 요소를 숨기는 헬퍼 함수
+function hideAllDisplayImages() {
+    const imageDisplays = [
+    	document.getElementById("dessertDisplay"),
+        document.getElementById("sandwitchDisplay"),
+        document.getElementById("cakeDisplay"),
+        document.getElementById("breadDisplay"),
+        document.getElementById("coffeeDisplay"),
+        document.getElementById("icecreamDisplay"),
+        document.getElementById("smoothyDisplay"), // smoothyDisplay 하나만 유지
+    ];
+
+    imageDisplays.forEach(element => {
+        if (element) {
+            element.style.display = "none";
+        }
+    });
+}
+
+// 2. 모달 열기/닫기 함수
+function openModal(id) {
+    const modal = document.getElementById(id);
+    if(modal) {
+        modal.style.display = 'block';
+        hideAllDisplayImages(); // 모달이 열릴 때 기존 이미지 숨기기
+    }
+}
+
+function closeModal(id) {
+    const modal = document.getElementById(id);
+    if(modal) {
+        modal.style.display = 'none';
+        hideAllDisplayImages(); // 모달이 닫힐 때 기존 이미지 숨기기
+
+        // 메뉴 모달 닫을 때 하위 메뉴도 닫기
+        if (id === 'menuModal') {
+       	    const dessertMenu = document.getElementById("dessertMenu");
+       	    if (dessertMenu) dessertMenu.style.display = "none";
+            const icecreamMenu = document.getElementById("icecreamMenu");
+            if (icecreamMenu) icecreamMenu.style.display = "none";
+            const breadMenu = document.getElementById("breadMenu");
+            if (breadMenu) breadMenu.style.display = "none";
+            const cakeMenu = document.getElementById("cakeMenu");
+            if (cakeMenu) cakeMenu.style.display = "none";
+            const sandwitchMenu = document.getElementById("sandwitchMenu");
+            if (sandwitchMenu) sandwitchMenu.style.display = "none";
+            const smoothyMenu = document.getElementById("smoothyMenu"); // smoothyMenu 추가
+            if (smoothyMenu) smoothyMenu.style.display = "none";        // smoothyMenu 추가
+        }
+    }
+}
+
+// 3. 아이스크림 하위 메뉴 토글 함수
+function toggleIcecreamSub() {
+    const icecreamMenu = document.getElementById("icecreamMenu");
+    const breadMenu = document.getElementById("breadMenu");
+    const cakeMenu = document.getElementById("cakeMenu");
+    const sandwitchMenu = document.getElementById("sandwitchMenu");
+    const smoothyMenu = document.getElementById("smoothyMenu"); // smoothyMenu 추가
+
+    if (icecreamMenu) {
+        if (icecreamMenu.style.display === "flex") {
+            icecreamMenu.style.display = "none";
+            const icecreamDisplay = document.getElementById('icecreamDisplay');
+            if (icecreamDisplay) icecreamDisplay.style.display = 'none';
+        } else {
+            icecreamMenu.style.display = "flex";
+            if (breadMenu && breadMenu.style.display === "flex") {
+                breadMenu.style.display = "none";
+                const breadDisplay = document.getElementById('breadDisplay');
+                if (breadDisplay) breadDisplay.style.display = 'none';
+            }
+            if (cakeMenu && cakeMenu.style.display === "flex") {
+                cakeMenu.style.display = "none";
+                const cakeDisplay = document.getElementById('cakeDisplay');
+                if (cakeDisplay) cakeDisplay.style.display = 'none';
+            }
+            if (sandwitchMenu && sandwitchMenu.style.display === "flex") {
+                sandwitchMenu.style.display = "none";
+                const sandwitchDisplay = document.getElementById('sandwitchDisplay');
+                if (sandwitchDisplay) sandwitchDisplay.style.display = 'none';
+            }
+            if (smoothyMenu && smoothyMenu.style.display === "flex") { // smoothyMenu 추가
+                smoothyMenu.style.display = "none";
+                const smoothyDisplay = document.getElementById('smoothyDisplay');
+                if (smoothyDisplay) smoothyDisplay.style.display = 'none';
+            }
+            hideAllDisplayImages();
+        }
+    } else {
+        console.error("Error: Element with ID 'icecreamMenu' not found.");
+    }
+}
+
+// 4. 브레드 하위 메뉴 토글 함수
+function toggleBreadSub() {
+    const breadMenu = document.getElementById("breadMenu");
+    const icecreamMenu = document.getElementById("icecreamMenu");
+    const cakeMenu = document.getElementById("cakeMenu");
+    const sandwitchMenu = document.getElementById("sandwitchMenu");
+    const smoothyMenu = document.getElementById("smoothyMenu"); // smoothyMenu 추가
+
+    if (breadMenu) {
+        if (breadMenu.style.display === "flex") {
+            breadMenu.style.display = "none";
+            const breadDisplay = document.getElementById('breadDisplay');
+            if (breadDisplay) breadDisplay.style.display = 'none';
+        } else {
+            breadMenu.style.display = "flex";
+            if (icecreamMenu && icecreamMenu.style.display === "flex") {
+                icecreamMenu.style.display = "none";
+                const icecreamDisplay = document.getElementById('icecreamDisplay');
+                if (icecreamDisplay) icecreamDisplay.style.display = 'none';
+            }
+            if (cakeMenu && cakeMenu.style.display === "flex") {
+                cakeMenu.style.display = "none";
+                const cakeDisplay = document.getElementById('cakeDisplay');
+                if (cakeDisplay) cakeDisplay.style.display = 'none';
+            }
+            if (sandwitchMenu && sandwitchMenu.style.display === "flex") {
+                sandwitchMenu.style.display = "none";
+                const sandwitchDisplay = document.getElementById('sandwitchDisplay');
+                if (sandwitchDisplay) sandwitchDisplay.style.display = 'none';
+            }
+            if (smoothyMenu && smoothyMenu.style.display === "flex") { // smoothyMenu 추가
+                smoothyMenu.style.display = "none";
+                const smoothyDisplay = document.getElementById('smoothyDisplay');
+                if (smoothyDisplay) smoothyDisplay.style.display = 'none';
+            }
+            hideAllDisplayImages();
+        }
+    } else {
+        console.error("Error: Element with ID 'breadMenu' not found.");
+    }
+}
+
+// 5. 케이크 하위 메뉴 토글 함수
+function toggleCakeSub() {
+    const cakeMenu = document.getElementById("cakeMenu");
+    const breadMenu = document.getElementById("breadMenu");
+    const icecreamMenu = document.getElementById("icecreamMenu");
+    const sandwitchMenu = document.getElementById("sandwitchMenu");
+    const smoothyMenu = document.getElementById("smoothyMenu"); // smoothyMenu 추가
+    
+    if (cakeMenu) {
+        if (cakeMenu.style.display === "flex") {
+            cakeMenu.style.display = "none";
+            const cakeDisplay = document.getElementById('cakeDisplay');
+            if (cakeDisplay) cakeDisplay.style.display = 'none';
+        } else {
+            cakeMenu.style.display = "flex";
+            if (breadMenu && breadMenu.style.display === "flex") {
+                breadMenu.style.display = "none";
+                const breadDisplay = document.getElementById('breadDisplay');
+                if (breadDisplay) breadDisplay.style.display = 'none';
+            }
+            if (icecreamMenu && icecreamMenu.style.display === "flex") {
+                icecreamMenu.style.display = "none";
+                const icecreamDisplay = document.getElementById('icecreamDisplay');
+                if (icecreamDisplay) icecreamDisplay.style.display = 'none';
+            }
+            if (sandwitchMenu && sandwitchMenu.style.display === "flex") {
+                sandwitchMenu.style.display = "none";
+                const sandwitchDisplay = document.getElementById('sandwitchDisplay');
+                if (sandwitchDisplay) sandwitchDisplay.style.display = 'none';
+            }
+            if (smoothyMenu && smoothyMenu.style.display === "flex") { // smoothyMenu 추가
+                smoothyMenu.style.display = "none";
+                const smoothyDisplay = document.getElementById('smoothyDisplay');
+                if (smoothyDisplay) smoothyDisplay.style.display = 'none';
+            }
+            hideAllDisplayImages();
+        }
+    } else {
+        console.error("Error: Element with ID 'cakeMenu' not found.");
+    }
+}
+
+/**
+ * 메뉴 아이템을 클릭했을 때, 해당하는 정보를 보여줍니다.
+ * 옵션 컨테이너가 있는 경우에만 옵션 영역을 함께 표시합니다.
+ * @param {string} itemId - 보여줄 아이템의 고유 ID
+ */
+function showImageSection(itemId) {
+    // 1. 초기 안내 메시지 숨기기
+    document.getElementById('initialMessage').style.display = 'none';
+
+    // 2. 모든 메뉴 섹션을 먼저 숨기기
+    const allSections = document.querySelectorAll('.menu-display-section');
+    allSections.forEach(section => {
+        section.style.display = 'none';
+    });
+
+    // 3. 클릭된 아이템에 해당하는 섹션 찾기
+    const targetSection = document.getElementById(itemId + '_section');
+
+    if (targetSection) {
+        // ★★★ 여기가 핵심 ★★★
+        // 4. 해당 섹션 안에 .options-container가 있는지 확인합니다.
+        const optionsContainer = targetSection.querySelector('.options-container');
+
+        if (optionsContainer) {
+            // 5-A. 옵션 컨테이너가 있다면, 섹션을 flex로 표시해 양쪽으로 나눕니다.
+            targetSection.style.display = 'flex';
+        } else {
+            // 5-B. 옵션 컨테이너가 없다면, 섹션을 block으로 표시해 이미지만 꽉 차게 보여줍니다.
+            targetSection.style.display = 'block';
+        }
+    }
+}
+
+// 6. 샌드위치 하위 메뉴 토글 함수
+function toggleSandwitchSub() {
+    const sandwitchMenu = document.getElementById("sandwitchMenu");
+    const breadMenu = document.getElementById("breadMenu");
+    const icecreamMenu = document.getElementById("icecreamMenu");
+    const cakeMenu = document.getElementById("cakeMenu");
+    const smoothyMenu = document.getElementById("smoothyMenu"); // smoothyMenu 추가
+
+    if (sandwitchMenu) {
+        if (sandwitchMenu.style.display === "flex") {
+            sandwitchMenu.style.display = "none";
+            const sandwitchDisplay = document.getElementById('sandwitchDisplay');
+            if (sandwitchDisplay) sandwitchDisplay.style.display = 'none';
+        } else {
+            sandwitchMenu.style.display = "flex";
+            if (breadMenu && breadMenu.style.display === "flex") {
+                breadMenu.style.display = "none";
+                const breadDisplay = document.getElementById('breadDisplay');
+                if (breadDisplay) breadDisplay.style.display = 'none';
+            }
+            if (icecreamMenu && icecreamMenu.style.display === "flex") {
+                icecreamMenu.style.display = "none";
+                const icecreamDisplay = document.getElementById('icecreamDisplay');
+                if (icecreamDisplay) icecreamDisplay.style.display = 'none';
+            }
+            if (cakeMenu && cakeMenu.style.display === "flex") {
+                cakeMenu.style.display = "none";
+                const cakeDisplay = document.getElementById('cakeDisplay');
+                if (cakeDisplay) cakeDisplay.style.display = 'none';
+            }
+            if (smoothyMenu && smoothyMenu.style.display === "flex") { // smoothyMenu 추가
+                smoothyMenu.style.display = "none";
+                const smoothyDisplay = document.getElementById('smoothyDisplay');
+                if (smoothyDisplay) smoothyDisplay.style.display = 'none';
+            }
+            hideAllDisplayImages();
+        }
+    } else {
+        console.error("Error: Element with ID 'sandwitchMenu' not found.");
+    }
+}
+
+// 7. 스무디 하위 메뉴 토글 함수 (새로 추가)
+function toggleSmoothySub() {
+    const smoothyMenu = document.getElementById("smoothyMenu");
+    const icecreamMenu = document.getElementById("icecreamMenu");
+    const breadMenu = document.getElementById("breadMenu");
+    const cakeMenu = document.getElementById("cakeMenu");
+    const sandwitchMenu = document.getElementById("sandwitchMenu");
+
+    if (smoothyMenu) {
+        if (smoothyMenu.style.display === "flex") {
+            smoothyMenu.style.display = "none";
+            const smoothyDisplay = document.getElementById('smoothyDisplay');
+            if (smoothyDisplay) smoothyDisplay.style.display = 'none';
+        } else {
+            smoothyMenu.style.display = "flex";
+            // 다른 하위 메뉴가 열려있다면 닫기
+            if (icecreamMenu && icecreamMenu.style.display === "flex") {
+                icecreamMenu.style.display = "none";
+                const icecreamDisplay = document.getElementById('icecreamDisplay');
+                if (icecreamDisplay) icecreamDisplay.style.display = 'none';
+            }
+            if (breadMenu && breadMenu.style.display === "flex") {
+                breadMenu.style.display = "none";
+                const breadDisplay = document.getElementById('breadDisplay');
+                if (breadDisplay) breadDisplay.style.display = 'none';
+            }
+            if (cakeMenu && cakeMenu.style.display === "flex") {
+                cakeMenu.style.display = "none";
+                const cakeDisplay = document.getElementById('cakeDisplay');
+                if (cakeDisplay) cakeDisplay.style.display = 'none';
+            }
+            if (sandwitchMenu && sandwitchMenu.style.display === "flex") {
+                sandwitchMenu.style.display = "none";
+                const sandwitchDisplay = document.getElementById('sandwitchDisplay');
+                if (sandwitchDisplay) sandwitchDisplay.style.display = 'none';
+            }
+            hideAllDisplayImages(); // 새로운 하위 메뉴 열기 전 모든 이미지 숨기기
+        }
+    } else {
+        console.error("Error: Element with ID 'smoothyMenu' not found.");
+    }
+}
+
+
+// 8. 이미지 표시 함수 (통합 및 확장)
+function showImageSection(key) {
+    let displayImage = null;
+
+    if (key === 'milkscone' || key === 'cookie' || key === 'scone' || key === 'bruton' || key === 'macaron' || key === 'pagete') {
+        displayImage = document.getElementById("breadDisplay");
+    } else if (key === 'espresso' || key === 'americano' || key === 'cafelatte' || key === 'capuccino' || key === 'einspanner' || key === 'dolcelatte' || key === 'dolcelatte' || key === 'chocolat' || key === ' frappuccino' || key === 'coldblue') {
+        displayImage = document.getElementById("coffeeDisplay");
+    } else if (key === 'appleice' || key === 'blacksorbet' || key === 'grapesherbet' || key === 'milksalt' || key === 'honeycrunch' || key === 'greentea' || key === 'amond') {
+        displayImage = document.getElementById("icecreamDisplay");
+    } else if (key === 'chococake' || key === 'blueberrycake' || key === 'strawberrycake' || key === '3cake' || key === 'milk' || key === 'catelet') {
+        displayImage = document.getElementById("cakeDisplay");
+    } else if (key === 'tunasand' || key === 'chickensand' || key === 'eggsand') {
+        displayImage = document.getElementById("sandwitchDisplay");
+    } else if (key === 'honeygrapefruit' || key === 'honeylemon' || key === 'avocadobanana' || key === 'strawberry' || key === 'blueberry') {
+        // 스무디 이미지 로직
+        displayImage = document.getElementById("smoothyDisplay");
+    }
+    // 다른 카테고리 (예: 커피)에 대한 조건도 필요하다면 여기에 추가
+    // else if (key.includes('coffee')) { displayImage = document.getElementById("coffeeDisplay"); }
+
+    if (!displayImage) {
+        console.error("Error: Display element not found for key:", key);
+        return;
+    }
+
     const imagePath = imageMap[key];
 
+    hideAllDisplayImages();
+
     if (imagePath) {
-      displayImage.src = imagePath;
-      displayImage.alt = flavorNames[key] ||
-      displayImage.style.display = "block";
+        displayImage.src = imagePath;
+        displayImage.alt = flavorNames[key] || "선택된 이미지";
+        displayImage.style.display = "block";
     } else {
-      console.warn('해당 키에 대한 이미지 경로가 없습니다:', key);
-      displayImage.style.display = "none"; // 이미지를 숨김
+        console.warn('해당 키에 대한 이미지 경로가 없습니다:', key);
+        displayImage.style.display = "none";
     }
+}
+
+
+  function closeModal(id) {
+    document.getElementById(id).style.display = "none";
   }
-  window.onclick = function(event) {
-	     const modals = ["signModal", "loginModal", "menuModal"];
-	     modals.forEach(id => {
-	       const modal = document.getElementById(id);
-	       if (modal && event.target === modal) {
-	         modal.style.display = "none";
-	       }
-  // 모달 열기 함수
- function openModal(id) {
-  document.getElementById(id).style.display = 'block';
-}
- function closeModal(id) {
-	  document.getElementById(id).style.display = 'none';
+  function toggleDessertSub() {
+	    const dessertMenu = document.getElementById("dessertMenu");
+	    if (dessertMenu.style.display === "none" || dessertMenu.style.display === "") {
+	        dessertMenu.style.display = "flex";
+	    } else {
+	        dessertMenu.style.display = "none";
+	    }
 	}
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
-}
-function showImageSection(name) {
-	const img = document.getElementById("icecreamDisplay");
-	img.src = "/images/" + name + "JPG";
-	img.style.display="block";
-}
-function showImageSection(flavor) {
-	   // 이미지 요소 가져오기
-	   const imgElement = document.getElementById('icecreamDisplay');
 
-	   // 이미지 경로 설정 (flavor 인자를 통해 동적으로 변경)
-	   imgElement.src = `/images/${flavor}.JPG`;
-
-	   // 이미지 alt 텍스트 설정 (옵션)
-	   const flavorNames = {
-	     appleice: "애플민트 아이스크림",
-	     blacksorbet: "블랙소르베 아이스크림",
-	     grapesherbet: "포도샤베트 아이스크림",
-	     milksalt: "우유소금 아이스크림",
-	     honeycrunch: "허니크런치 아이스크림",
-	     greentea: "녹차 아이스크림",
-	     amond: "피스타치오아몬드 아이스크림"
-	   };
-	   imgElement.alt = flavorNames[flavor] || "선택된 아이스크림";
-
-	   // 이미지 표시
-	   imgElement.style.display = 'block';
-	 }
-	 
+// 9. 모달 외부 클릭 시 닫기
 window.onclick = function(event) {
-    const menu = document.getElementById("icecreamMenu");
-    // 클릭된 곳이 메뉴 영역이나 메뉴 열기 버튼이 아닐 경우 메뉴를 닫음
-    if (!menu.contains(event.target) && !event.target.matches('.menu-item')) {
-        menu.style.display = "none";
+    const clickableModals = ['signModal', 'loginModal', 'menuModal'];
+
+    clickableModals.forEach(modalId => {
+        const modal = document.getElementById(modalId);
+        if (modal && event.target === modal) {
+            closeModal(modalId);
+        }
+    });
+};
+function toggleDessertSub() {
+    const dessertMenu = document.getElementById("dessertMenu");
+    const breadMenu = document.getElementById("breadMenu");
+    const cakeMenu = document.getElementById("cakeMenu");
+    const icecreamMenu = document.getElementById("icecreamMenu");
+    const sandwitchMenu = document.getElementById("sandwitchMenu");
+    const smoothyMenu = document.getElementById("smoothyMenu"); // 있으면 포함
+
+    if (dessertMenu) {
+        if (dessertMenu.style.display === "flex" || dessertMenu.style.display === "block") {
+            dessertMenu.style.display = "none";
+        } else {
+            dessertMenu.style.display = "flex"; // 또는 "block" - CSS에 따라 선택
+            // 다른 하위 메뉴는 닫기
+            if (breadMenu) breadMenu.style.display = "none";
+            if (cakeMenu) cakeMenu.style.display = "none";
+            if (icecreamMenu) icecreamMenu.style.display = "none";
+            if (sandwitchMenu) sandwitchMenu.style.display = "none";
+            if (smoothyMenu) smoothyMenu.style.display = "none";
+            hideAllDisplayImages();
+        }
+    } else {
+        console.error("Error: Element with ID 'dessertMenu' not found.");
     }
-}; 
-	     });
-	   };
+}
+//--- 기존 메뉴 토글 함수들 ---
+function toggleSmoothySub() {
+    const menu = document.getElementById('smoothyMenu');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+function toggleDessertSub() {
+    const menu = document.getElementById('dessertMenu');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+function toggleSandwitchSub() {
+    const menu = document.getElementById('sandwitchMenu');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+// ... 기타 토글 함수들 ...
+
+// --- 옵션 패널 관련 함수 (새로 추가) ---
+
 
 
 </script>
